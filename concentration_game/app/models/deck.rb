@@ -3,7 +3,14 @@ class Deck < ActiveRecord::Base
   has_many :cards
 
   def shuffle
-    cards.shuffle
+    cards.where(matched: false).shuffle
+  end
+
+  def set_cards_as_unmatched
+    cards.all.each do |card|
+      card.matched = false
+      card.save
+    end
   end
 
 end
