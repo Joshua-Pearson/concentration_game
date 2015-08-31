@@ -1,8 +1,7 @@
 
-game = Game.create(name: "Concentration", turn: 0)
-deck = Deck.create(game: game)
+deck = Deck.create
 
-suits = { 1 => "hearts", 2 => "diamonds", 3 => "spades", 4 => "clubs" }
+suits = { 1 => "hearts", 2 => "diams", 3 => "spades", 4 => "clubs" }
 faces = { 1 => "A", 11 => "J", 12 => "Q", 13 => "K" }
 
 i = 1

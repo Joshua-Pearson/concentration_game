@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150830232016) do
+ActiveRecord::Schema.define(version: 20150830235508) do
 
   create_table "cards", force: :cascade do |t|
     t.integer  "deck_id",    limit: 4
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20150830232016) do
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.integer  "points",     limit: 4
   end
 
   add_index "players", ["game_id"], name: "index_players_on_game_id", using: :btree
