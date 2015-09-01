@@ -13,32 +13,8 @@ class CardPresenter < BasePresenter
         when 1
           content_tag(:div, raw("&#{card.suit};"), class: "ace") +
           display_corner_suit(true)
-        when 2
-          display_small_suits("21", "25") +
-          display_corner_suit(true)
-        when 3
-          display_small_suits("21", "25", "23") +
-          display_corner_suit(true)
-        when 4
-          display_small_suits("11", "15", "31", "35") +
-          display_corner_suit(true)
-        when 5
-          display_small_suits("11", "15", "31", "35", "23") +
-          display_corner_suit(true)
-        when 6
-          display_small_suits("11", "13", "15", "31", "35", "33") +
-          display_corner_suit(true)
-        when 7
-          display_small_suits("11", "13", "15", "31", "35", "33", "22") +
-          display_corner_suit(true)
-        when 8
-          display_small_suits("11", "13", "15", "22", "24", "31", "33", "35") +
-          display_corner_suit(true)
-        when 9
-          display_small_suits("11", "12", "14", "15", "23", "31", "32", "34", "35") +
-          display_corner_suit(true)
         else
-          display_small_suits("11", "12", "14", "15", "22", "24", "31", "32", "34", "35") +
+          display_small_suits(*Card::CSS_VALUE_MATCHING[card.value]) +
           display_corner_suit(true)
       end
     end
