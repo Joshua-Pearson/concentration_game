@@ -1,0 +1,9 @@
+
+<div class="row">
+  <div class="col-xs-6">
+    <h1>Congratulations <%= @player.name %>!</h1>
+    <h3>You finished in <%= @game.turn %> moves with a score of <%= @player.points %> points.<br/>
+      <%= link_to("New game", root_path, class: "btn btn-default-width btn-info") %>
+    </h3>
+  </div>
+</div>

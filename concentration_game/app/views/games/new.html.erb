@@ -1,0 +1,23 @@
+
+<div class="row">
+  <div class="col-xs-5 col-xs-offset-4">
+    <h1>Welcome to Concentration!</h1>
+  </div>
+</div>
+
+<div class="row">
+
+  <%= bootstrap_form_for @game, remote: true do |f| %>
+    <%= f.hidden_field :name, value: "Concentration" %>
+    <%= f.hidden_field :turn, value: 0 %>
+
+
+    <div class="col-xs-1 col-xs-offset-4">
+      <%= f.submit("Click", remote: true, class: "btn btn-info btn-default-width") %>
+    </div>
+    <div class="col-xs-6">
+      <h3>To start a new game</h3>
+    </div>
+  <% end %>
+
+</div>

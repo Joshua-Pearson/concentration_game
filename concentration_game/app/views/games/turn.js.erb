@@ -1,0 +1,43 @@
+<% if @new_cards == nil %>
+
+    $("#points-scored").removeClass("text-green").addClass("text-red").html("-1").fadeIn();
+    setTimeout(function() {
+        $(".visible").each(function(index, element) {
+            $(element).addClass("invisible");
+            $(element).removeClass("visible");
+        });
+        $("#points-scored").fadeOut();
+    }, 400);
+
+<% elsif @new_cards.present? %>
+
+    $("#points-scored").removeClass("text-red").addClass("text-green").html("+1").fadeIn();
+    setTimeout(function() {
+        $("#card-id-" + "<%= @card_one.id %>").html("<%= j render "cards/show", card: @new_cards.first %>");
+        $("#card-id-" + "<%= @card_two.id %>").html("<%= j render "cards/show", card: @new_cards.last %>");
+        $("#card-id-" + "<%= @card_one.id %>").attr("id", "card-id-" + "<%= @new_cards.first.id %>");
+        $("#card-id-" + "<%= @card_two.id %>").attr("id", "card-id-" + "<%= @new_cards.last.id %>");
+        $("#points-scored").fadeOut();
+    }, 400);
+
+<% else %>
+
+    $("#points-scored").removeClass("text-red").addClass("text-green").html("+1").fadeIn();
+    setTimeout(function() {
+        $("#card-id-" + "<%= @card_one.id %>").html("<%= j render "cards/blank_card" %>");
+        $("#card-id-" + "<%= @card_two.id %>").html("<%= j render "cards/blank_card" %>");
+        $("#points-scored").fadeOut();
+    }, 400);
+
+<% end %>
+
+$("#game-header").html("<%= j render "header" %>");
+$("#game-board-hidden-fields").html("<%= j render "hidden_fields" %>");
+
+if ($('.invisible').length === 0) {
+
+    $("#game-header").html("<%= j render "game_over_header" %>");
+
+}
+
+

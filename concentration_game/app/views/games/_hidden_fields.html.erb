@@ -1,0 +1,5 @@
+
+<%= hidden_field_tag :id, @game.id %>
+<%= hidden_field_tag :card_one_id, "" %>
+<%= hidden_field_tag :card_two_id, "" %>
+<%= hidden_field_tag :cards_left, @cards_left.map { |c| c.id } %>

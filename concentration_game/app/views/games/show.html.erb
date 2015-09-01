@@ -1,0 +1,26 @@
+
+<div id="game-header">
+  <%= render "header" %>
+</div>
+
+<div id="points-scored" class="text-red"></div>
+
+<%= form_tag(games_turn_path, method: :post, id: "next-turn", remote: true) do %>
+
+  <div class="row">
+
+    <% @cards_on_board.each do |card| %>
+
+      <div id="card-id-<%= card.id %>">
+        <%= render "cards/show", card: card %>
+      </div>
+
+    <% end %>
+
+  </div>
+
+  <div id="game-board-hidden-fields">
+    <%= render "games/hidden_fields" %>
+  </div>
+
+<% end %>
