@@ -20,16 +20,11 @@ class GamesController < ApplicationController
 
   def turn
     if @card_one.is_matching?(@card_two)
-      @card_one.matched = true
-      @card_one.save
-      @card_two.matched = true
-      @card_two.save
-      @player.points += 1
-      @player.save
+      @card_one.update_attributes(matched: true) && @card_two.update_attributes(matched: true)
+      @player.update_attributes(points: @player.points += 1)
       @new_cards = @cards_left.shift(2)
     else
-      @player.points -= 1
-      @player.save
+      @player.update_attributes(points: @player.points -= 1)
     end
 
     respond_to do |format|
@@ -52,8 +47,7 @@ private
 
   def set_variables_for_each_turn
     @cards_left ||= Card.where(id: params[:cards_left].split(" ")).shuffle
-    @game.turn += 1
-    @game.save
+    @game.update_attributes(turn: @game.turn += 1)
     @card_one = Card.find_by(id: params[:card_one_id])
     @card_two = Card.find_by(id: params[:card_two_id])
   end
