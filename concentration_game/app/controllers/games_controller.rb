@@ -26,7 +26,7 @@ class GamesController < ApplicationController
       @card_two.save
       @player.points += 1
       @player.save
-      @new_cards = @cards_left.pop(2)
+      @new_cards = @cards_left.shift(2)
     else
       @player.points -= 1
       @player.save
@@ -47,7 +47,7 @@ private
   def start_new_game
     @game.deck.set_cards_as_unmatched
     @cards_left = @game.deck.shuffle
-    @cards_on_board = @cards_left.pop(22)
+    @cards_on_board = @cards_left.shift(22)
   end
 
   def set_variables_for_each_turn
